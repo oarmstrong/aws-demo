@@ -1,0 +1,22 @@
+version: "3.2"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/web/Dockerfile
+    image: fubra/demo-http
+    ports:
+      - "8080:80"
+    links:
+      - php
+    volumes:
+      - ./src:/app
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: fubra/demo-php
+    volumes:
+      - ./src:/app
