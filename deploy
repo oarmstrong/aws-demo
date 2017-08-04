@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo "starting build"
+build_id=$(aws codebuild start-build --project-name demo-app | jq --raw-output '.build.id')
+echo "build running $build_id"
+
+while :; do
+	status=$(aws codebuild batch-get-builds --ids $build_id | jq --raw-output '.builds[0].buildStatus')
+	echo "waiting for build to finish... current status: $status"
+	if [[ "$status" == "SUCCEEDED" ]]; then
+		break
+	fi
+
+	sleep 10
+done
+
+echo "Built successfully, deploying..."
+
+(
+cd ../terraform
+/home/ollie/dl/terraform taint aws_ecs_task_definition.demo-app
+/home/ollie/dl/terraform apply
+)
+
+echo "deployed"
