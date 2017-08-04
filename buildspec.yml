@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - docker build -t 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-http -f docker/web/Dockerfile .
-      - docker build -t 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-php -f docker/web/Dockerfile .
+      - docker build -t 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-php -f docker/php/Dockerfile .
   post_build:
     commands:
       - docker push 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-http
