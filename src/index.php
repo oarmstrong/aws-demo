@@ -9,5 +9,7 @@
 
 <p>We have automated builds!</p>
 
+<p>Generated at: <?php echo time() ?></p>
+
 </body>
 </html>
