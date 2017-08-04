@@ -3,8 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - apk add --no-cache ca-certificates curl
-      - curl -L "https://github.com/docker/compose/releases/download/1.15.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+      - apk add --no-cache py-pip docker
+      - pip install docker-compose
   build:
     commands:
-      - /usr/local/bin/docker-compose build
+      - docker-compose build
