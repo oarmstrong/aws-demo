@@ -1,6 +1,9 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - $(aws ecr get-login --region eu-west-2)
   build:
     commands:
       - docker build -t 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-http -f docker/web/Dockerfile .
