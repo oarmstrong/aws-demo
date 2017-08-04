@@ -7,5 +7,7 @@
 
 <img src="kitten.jpg">
 
+<p>We have automated builds!</p>
+
 </body>
 </html>
