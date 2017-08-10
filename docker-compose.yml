@@ -7,9 +7,7 @@ services:
       dockerfile: docker/web/Dockerfile
     image: fubra/demo-http
     ports:
-      - "8080:80"
-    links:
-      - php
+      - "80"
     volumes:
       - ./src:/app
 
@@ -18,5 +16,14 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     image: fubra/demo-php
+    env_file: dev.env
+    environment:
+      - MYSQL_HOST=db
     volumes:
       - ./src:/app
+
+  db:
+    image: mariadb:10.1
+    env_file: dev.env
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d

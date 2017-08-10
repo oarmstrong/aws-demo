@@ -7,9 +7,22 @@
 
 <img src="kitten.jpg">
 
-<p>We have automated builds!</p>
+<h3>Database Entries</h3>
+<?php
+$host = getenv("MYSQL_HOST");
+$db = getenv("MYSQL_DATABASE");
+$user = getenv("MYSQL_USER");
+$password = getenv("MYSQL_PASSWORD");
+$pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $password);
 
-<p>Generated at: <?php echo time() ?></p>
+$words = $pdo->query("select text from words");
+while ($row = $words->fetch()) {
+    echo "<p>".$row['text']."</p>";
+}
+?>
+
+<hr>
+<p>Generated at: <?php echo time(); ?></p>
 
 </body>
 </html>
