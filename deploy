@@ -17,9 +17,9 @@ done
 echo "Built successfully, deploying..."
 
 (
-cd ../terraform
-/home/ollie/dl/terraform taint aws_ecs_task_definition.demo-app
-/home/ollie/dl/terraform apply
+cd ../aws-demo-terraform
+terraform taint aws_ecs_task_definition.demo-app
+terraform apply
 )
 
 echo "deployed"
