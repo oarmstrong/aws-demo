@@ -22,6 +22,13 @@ while ($row = $words->fetch()) {
 ?>
 
 <hr>
+
+<form enctype="multipart/form-data" action="/gallery.php" method="POST">
+<input name="userfile" type="file">
+<input type="submit">
+</form>
+
+<hr>
 <p>Generated at: <?php echo time(); ?></p>
 
 </body>

@@ -1,5 +1,8 @@
 version: "3.2"
 
+volumes:
+  uploads:
+
 services:
   web:
     build:
@@ -10,6 +13,7 @@ services:
       - "80"
     volumes:
       - ./src:/app
+      - uploads:/app/uploads:ro
 
   php:
     build:
@@ -21,6 +25,7 @@ services:
       - MYSQL_HOST=db
     volumes:
       - ./src:/app
+      - uploads:/uploads
 
   db:
     image: mariadb:10.1
