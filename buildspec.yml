@@ -3,12 +3,12 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --region eu-west-2)
+      - $(aws ecr get-login --region eu-west-1)
   build:
     commands:
-      - docker build -t 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-http -f docker/web/Dockerfile .
-      - docker build -t 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-php -f docker/php/Dockerfile .
+      - docker build -t 126735570987.dkr.ecr.eu-west-1.amazonaws.com/fubra/demo-http -f docker/web/Dockerfile .
+      - docker build -t 126735570987.dkr.ecr.eu-west-1.amazonaws.com/fubra/demo-php -f docker/php/Dockerfile .
   post_build:
     commands:
-      - docker push 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-http
-      - docker push 126735570987.dkr.ecr.eu-west-2.amazonaws.com/fubra/demo-php
+      - docker push 126735570987.dkr.ecr.eu-west-1.amazonaws.com/fubra/demo-http
+      - docker push 126735570987.dkr.ecr.eu-west-1.amazonaws.com/fubra/demo-php
